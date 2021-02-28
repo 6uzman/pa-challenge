@@ -1,0 +1,28 @@
+.btn-link {
+  color: #22214f;
+  text-decoration: none;
+}
+
+.btn-link:focus {
+  box-shadow: none;
+  color: #22214f;
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  text-decoration: none;
+  color: #35348a;
+}
+
+.badge-primary {
+  background-color: #22214f;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  border-color: #35348a;
+  background-color: #35348a;
+}
+
+.card-header {
+  padding: 0;
+}
