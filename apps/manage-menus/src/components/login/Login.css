@@ -1,0 +1,37 @@
+
+
+.fila {
+    height: 100vh;
+}
+
+.btn-primary {
+    background: #22214F;
+    border-color: #22214F;
+}
+
+.btn-primary:hover {
+    background: #35348a;
+    border-color: #35348a;
+}
+
+.btn-primary:disabled {
+    background-color: rgb(69 63 153/50%);
+    border-color: #35348a;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active {
+    background: #35348a;
+    border-color: #35348a;
+} 
+
+.btn-primary:focus {
+    opacity: 0.6;
+    background: #35348a;
+    border-color: #35348a;
+    box-shadow:  0 0 0 0.2rem rgb(69 63 153/50%);
+}
+
+.form-control:focus {
+    border-color: #35348a;
+    box-shadow: 0 0 0 0.2rem rgb(69 63 153/50%);
+}
