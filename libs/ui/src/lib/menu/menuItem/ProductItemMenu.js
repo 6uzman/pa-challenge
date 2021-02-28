@@ -8,10 +8,9 @@ function ProductItemMenu({ item, handleAvailable }) {
 
     const [available, setAvailability] = useState(availability === 'AVAILABLE' ? true : false)
 
-    console.log("available:", available)
 
     return (
-        <div className={"ItemMenu-container "} id={uuid}>
+        <div className={"ItemMenu-container "} key={uuid}>
             <div className="item-left">
                 <div className="item-img-container">
                     <img src={imageUrl}
@@ -29,11 +28,11 @@ function ProductItemMenu({ item, handleAvailable }) {
             <div className="item-action custom-control custom-switch custom-switch-md">
                 <input className="custom-control-input btn-lg"
                     type="checkbox"
-                    id="flexSwitchCheck"
+                    id={uuid}
                     checked={available}
                     onChange={() => { setAvailability(!available); handleAvailable(uuid, !available); }} />
 
-                <label className="custom-control-label" htmlFor="flexSwitchCheck" />
+                <label className="custom-control-label" htmlFor={uuid} />
 
             </div>
 

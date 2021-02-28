@@ -6,9 +6,9 @@ function MenuCategory(props) {
     const { header, body, handleStatusChange } = props
     const [isShowed, setShowed] = useState(false)
 
-    console.log("header: ", header)
-    console.log("body", body)
-    console.log("isShowed", isShowed)
+    // console.log("header: ", header)
+    // console.log("body", body)
+    // console.log("isShowed", isShowed)
 
     return (<>
         <div className="card">
@@ -23,19 +23,15 @@ function MenuCategory(props) {
                 </div>
             </div>
 
-            <div className="pl-5">
-                <ProductItemMenu item={body[0]} handleAvailable={handleStatusChange} />
-
-            </div>
-            {/* {
-                isShowed && <div className="pl-5">
+            {
+                isShowed && <div >
                     {
                         body && body.length > 0 && body.map(item => {
-                            <ProductItemMenu item={item} handleAvailable={handleStatusChange} />
+                            return <ProductItemMenu item={item} handleAvailable={handleStatusChange} />
                         })
                     }
                 </div>
-            } */}
+            }
         </div>
     </>)
 }

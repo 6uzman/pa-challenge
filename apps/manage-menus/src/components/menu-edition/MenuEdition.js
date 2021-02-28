@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import CustomFetch from "../fetch/CustomFetch"
 import { MenuCategory } from "@parrot-challenge/ui"
+import "./MenuEdition.css"
 
 class MenuEdition extends Component {
     constructor(props) {
@@ -56,6 +57,16 @@ class MenuEdition extends Component {
         }
     }
 
+    updateStatusItem = (uuid, available) => {
+        for (let category in categories) {
+            const prod = category.products.filter(product => product.uuid === uuid)
+            if (prod) {
+                this.setState({
+                    error: "No se encontraron productos para su tienda"
+                })
+            }
+        }
+    }
 
     convertionCollection = (results) => {
         const categoriesSet = []
@@ -88,30 +99,51 @@ class MenuEdition extends Component {
     }
 
 
+    handleItemStatusChange = async (uuid, status) => {
+        console.log("cambiar status", uuid, status)
+        //"availability": "AVAILABLE",
+        const requestBody = {
+            availability: status ? "AVAILABLE" : "UNAVAILABLE"
+        }
+
+        const response = await CustomFetch.update(`/api/v1/products/${uuid}/availability`, requestBody)
+        if (response && response.status === "ok") {
+            console.log("Update OK")
+
+        }
+    }
 
 
     render() {
-        console.log("rendered:", this.state.categories ? this.state.categories.length : "--")
         return <>
-            { this.state.store && <h2>{this.state.store.name}</h2>}
-            {
-                this.state.categories && this.state.categories.map(element => {
-                    return <MenuCategory key={element.uuid}
-                        header={{ name: element.name, total: element.products.length }}
-                        body={element.products}
-                        handleStatusChange={() => console.log("cambiar status")} />
+            <div className="container mt-4">
+                <div className="row justify-content-center">
+                    <div className="col-12 col-lg-8">
+                        {this.state.store && <h2>{this.state.store.name}</h2>}
+                    </div>
+                    <div className="col-12 col-lg-8">
+                        {
+                            this.state.categories && this.state.categories.map(element => {
+                                return <MenuCategory key={element.uuid}
+                                    header={{ name: element.name, total: element.products.length }}
+                                    body={element.products}
+                                    handleStatusChange={this.handleItemStatusChange} />
 
-                })
-            }
-
-            {
-                this.state.error &&
-                <div className="row">
-                    <div className="col">
-                        <p className={"text-danger"}>{this.state.error}</p>
+                            })
+                        }
+                    </div>
+                    <div className="col-8">
+                        {
+                            this.state.error &&
+                            <div className="row">
+                                <div className="col">
+                                    <p className={"text-danger"}>{this.state.error}</p>
+                                </div>
+                            </div>
+                        }
                     </div>
                 </div>
-            }
+            </div>
         </>
     }
 }
