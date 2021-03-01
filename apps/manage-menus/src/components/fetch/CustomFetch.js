@@ -106,7 +106,6 @@ async function refreshToken() {
         const response = await request("/token/refresh", params, 'POST')
         if (response.status === 200) {
             let jsonRes = await response.json()
-            //console.log("JSON respuesta del refresh:" , jsonRes)
             //update access & refresh token to redux
             store.dispatch(actualizarToken(jsonRes.access, jsonRes.refresh))
 
@@ -117,7 +116,6 @@ async function refreshToken() {
     } catch (e) {
         console.error("Ocurrio un error", e)
         store.dispatch(cerrarSesion())
-        //window.location.assign("/smgestor/")       
     }
 }
 

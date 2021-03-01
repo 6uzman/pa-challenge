@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import MenuHeader from "../menuHeader/MenuHeader"
 import ProductItemMenu from "../menuItem/ProductItemMenu"
+import "./MenuCategory.css"
 
 function MenuCategory(props) {
     const { header, body, handleStatusChange } = props
@@ -18,7 +19,8 @@ function MenuCategory(props) {
                         type="button"
                         onClick={() => setShowed(!isShowed)}
                         aria-controls="collapseCategory">
-                        <MenuHeader name={header.name} total={header.total} />
+                        {/* <div className={"d-inline " + (isShowed ? "openSectionMark" : "")}>&#62;</div> */}
+                        <MenuHeader name={header.name} total={header.total} isOpen={isShowed} />
                     </button>
                 </div>
             </div>

@@ -19,8 +19,8 @@ function ProductItemMenu({ item, handleAvailable }) {
                 </div>
 
                 <div className={"item-description " + (!available ? 'grey-disabled' : '')}>
-                    <h5>{name}</h5>
-                    <p id="price">${price}</p>
+                    <h6>{name}</h6>
+                    <p className="my-0" id="price">${price}</p>
                     <p className="small">{description}</p>
                 </div>
             </div>

@@ -27,8 +27,8 @@ function Router() {
             <Switch>
                 <Route exact path="/" component={Login} />
                 <Route path="/login" component={Login} />
-                <Route path="/home" component={MenuEdition} />
-                
+                <PrivateRoute exact path="/home" auth={auth} component={MenuEdition} />
+
                 {/* <PrivateRoute exact path="/home" auth={auth} component={NavBar} /> */}
             </Switch>
         </BrowserRouter>
